@@ -5,6 +5,8 @@ Use : Spring, Jpa, Mysql, Swagger, Jwt, Mailgun
 
 Goal : 사용자와 매장 관리자를 위한 매장 예약 서비스 Backend 구성
 
+참고 : Mailgun SecretKey 노출 위험으로 설정 파일은 공유 안함
+
 ## 공통(사용자, 매장관리자)
 - [x] 이메일을 통해서 인증번호를 통한 회원 가입 기능 구현 > Mailgun 사용
 - [ ] 로그인 토큰 발행 > Jwt
