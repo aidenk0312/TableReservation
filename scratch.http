@@ -1,4 +1,4 @@
-### manager 회원가입
+### 회원가입(manager)
 POST http://localhost:8080/signup/manager
 Content-Type: application/json
 
@@ -10,7 +10,19 @@ Content-Type: application/json
   "phone": "01000000000"
 }
 
-### customer 회원가입
+### 이메일 인증(manager)
+GET http://localhost:8080/signup/manager/verify/?email=kys1064@naver.com&code=rFVWGlXkif
+
+###로그인 (manager)
+POST http://localhost:8080/signIn/manager
+Content-Type: application/json
+
+{
+  "email": "kys1064@naver.com",
+  "password": "pw"
+}
+
+### 회원가입(customer)
 POST http://localhost:8081/signup/customer
 Content-Type: application/json
 
