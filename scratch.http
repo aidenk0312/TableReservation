@@ -1,0 +1,35 @@
+### 회원가입(manager)
+POST http://localhost:8080/signup/manager
+Content-Type: application/json
+
+{
+  "birth": "1997-02-11",
+  "email": "kys1064@naver.com",
+  "name": "YS",
+  "password": "pw",
+  "phone": "01000000000"
+}
+
+### 이메일 인증(manager)
+GET http://localhost:8080/signup/manager/verify/?email=kys1064@naver.com&code=rFVWGlXkif
+
+###로그인 (manager)
+POST http://localhost:8080/signIn/manager
+Content-Type: application/json
+
+{
+  "email": "kys1064@naver.com",
+  "password": "pw"
+}
+
+### 회원가입(customer)
+POST http://localhost:8081/signup/customer
+Content-Type: application/json
+
+{
+"birth": "1997-02-11",
+"email": "kys1064@naver.com",
+"name": "YS",
+"password": "pw",
+"phone": "01000000000"
+}
