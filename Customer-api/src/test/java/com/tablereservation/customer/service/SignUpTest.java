@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class SignUpCustomerServiceTest {
+class SignUpTest {
 
     @Autowired
     private SignUpCustomerService service;

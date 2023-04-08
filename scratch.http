@@ -11,9 +11,9 @@ Content-Type: application/json
 }
 
 ### 이메일 인증(manager)
-GET http://localhost:8080/signup/manager/verify/?email=kys1064@naver.com&code=rFVWGlXkif
+GET http://localhost:8080/signup/manager/verify/?email=kys1064@naver.com&code=iuhljBDVO2
 
-###로그인 (manager)
+###로그인(manager)
 POST http://localhost:8080/signIn/manager
 Content-Type: application/json
 
@@ -32,4 +32,16 @@ Content-Type: application/json
 "name": "YS",
 "password": "pw",
 "phone": "01000000000"
+}
+
+### 이메일 인증(customer)
+GET http://localhost:8081/signup/customer/verify/?email=kys1064@naver.com&code=vXrKdcvtm2
+
+###로그인(customer)
+POST http://localhost:8081/signIn/customer
+Content-Type: application/json
+
+{
+  "email": "kys1064@naver.com",
+  "password": "pw"
 }
