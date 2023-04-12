@@ -1,4 +1,4 @@
-package com.tablereservation.manager.domain;
+package com.tablereservation.manager.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

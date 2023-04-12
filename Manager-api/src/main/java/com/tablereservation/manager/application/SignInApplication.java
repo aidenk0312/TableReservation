@@ -25,5 +25,4 @@ public class SignInApplication {
 
         return provider.createToken(m.getEmail(), m.getManager_id(), UserType.MANAGER);
     }
-
 }
