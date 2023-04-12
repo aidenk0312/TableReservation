@@ -11,15 +11,27 @@ Content-Type: application/json
 }
 
 ### 이메일 인증(manager)
-GET http://localhost:8080/signup/manager/verify/?email=kys1064@naver.com&code=iuhljBDVO2
+GET http://localhost:8080/signup/manager/verify/?email=kys1064@naver.com&code=yFWiWaTdsp
 
-###로그인(manager)
+### 로그인(manager)
 POST http://localhost:8080/signIn/manager
 Content-Type: application/json
 
 {
   "email": "kys1064@naver.com",
   "password": "pw"
+}
+
+### 스토어 생성(manager)
+POST http://localhost:8080/store/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiTUFOQUdFUiIsImlhdCI6MTY4MTI4NDgyMSwiZXhwIjoxNjgxMzcxMjIxfQ.0tWIelOlVT0WkssW0H86T-Yy8D5vyN1iC_VJdD1qous
+
+{
+  "managerId": 1,
+  "store_name": "test 가게",
+  "store_phone": "02-1234-5678",
+  "address": "Test 주소"
 }
 
 ### 회원가입(customer)
