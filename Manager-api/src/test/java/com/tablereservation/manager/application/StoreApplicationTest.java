@@ -63,4 +63,13 @@ public class StoreApplicationTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Store 수정이 완료 되었습니다.", response.getBody());
     }
+
+    @Test
+    @DisplayName("가게 삭제 Test")
+    public void deleteStore_success() {
+        ResponseEntity<String> response = storeApplication.deleteStore(storeId);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("Store 삭제가 완료 되었습니다.", response.getBody());
+    }
 }

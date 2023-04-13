@@ -21,4 +21,9 @@ public class StoreApplication {
         storeService.updateStore(storeId, storeDto);
         return ResponseEntity.ok("Store 수정이 완료 되었습니다.");
     }
+
+    public ResponseEntity<String> deleteStore(Long storeId) {
+        storeService.deleteStore(storeId);
+        return ResponseEntity.ok("Store 삭제가 완료 되었습니다.");
+    }
 }

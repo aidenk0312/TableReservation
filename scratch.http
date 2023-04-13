@@ -45,6 +45,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2Z
   "address": "수정 주소"
 }
 
+### 가게 삭제(manager)
+DELETE http://localhost:8080/store/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6InFpalNBakR1VUZRVnlabDFkMStsZ1E9PSIsInJvbGVzIjoiTUFOQUdFUiIsImlhdCI6MTY4MTMwNjM3MywiZXhwIjoxNjgxMzkyNzczfQ.UPMx5LprRrB2pOLmumfwDF-bsUwHvqiv1nju-dH7dG4
+
 ### 회원가입(customer)
 POST http://localhost:8081/signup/customer
 Content-Type: application/json

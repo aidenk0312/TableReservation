@@ -40,4 +40,11 @@ public class StoreService {
 
         storeRepository.save(store);
     }
+
+    public void deleteStore(Long storeId) {
+        Store store = storeRepository.findById(storeId)
+                .orElseThrow(() -> new RuntimeException("가게가 존재하지 않습니다.")); // 커스텀 에러로 분리 필요
+
+        storeRepository.delete(store);
+    }
 }
