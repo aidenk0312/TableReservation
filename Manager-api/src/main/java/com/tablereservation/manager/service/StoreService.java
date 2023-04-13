@@ -17,7 +17,7 @@ public class StoreService {
 
     public ResponseEntity<?> createStore(StoreDto storeDto, Long managerId) {
         Manager manager = managerRepository.findById(managerId)
-                .orElseThrow(() -> new RuntimeException("Manager not found"));
+                .orElseThrow(() -> new RuntimeException("매니저가 존재하지 않습니다.")); // 커스텀 에러로 분리 필요
 
         Store store = Store.builder()
                 .manager(manager)
@@ -28,5 +28,16 @@ public class StoreService {
         storeRepository.save(store);
 
         return ResponseEntity.ok().build();
+    }
+
+    public void updateStore(Long storeId, StoreDto storeDto) {
+        Store store = storeRepository.findById(storeId)
+                .orElseThrow(() -> new RuntimeException("가게가 존재하지 않습니다.")); // 커스텀 에러로 분리 필요
+
+        store.setStore_name(storeDto.getStore_name());
+        store.setStore_phone(storeDto.getStore_phone());
+        store.setAddress(storeDto.getAddress());
+
+        storeRepository.save(store);
     }
 }

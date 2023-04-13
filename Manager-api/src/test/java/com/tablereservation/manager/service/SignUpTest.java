@@ -22,11 +22,11 @@ class SignUpTest {
     @DisplayName("회원가입 테스트")
     void signUp() {
         ManagerSignUpForm form = ManagerSignUpForm.builder()
-                .name("kim")
+                .name("ki111m")
                 .birth(LocalDate.now())
-                .email("abc111@test.com")
-                .password("1")
-                .phone("01011111111")
+                .email("abc11121231@test.com")
+                .password("122")
+                .phone("01021111111")
                 .build();
         Manager m = service.signUp(form);
 

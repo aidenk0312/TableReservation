@@ -16,4 +16,9 @@ public class StoreApplication {
         storeService.createStore(storeDto, managerId);
         return new ResponseEntity<>("Store 생성이 완료 되었습니다.", HttpStatus.CREATED);
     }
+
+    public ResponseEntity<String> updateStore(Long storeId, StoreDto storeDto) {
+        storeService.updateStore(storeId, storeDto);
+        return ResponseEntity.ok("Store 수정이 완료 되었습니다.");
+    }
 }
