@@ -1,6 +1,5 @@
 package com.tablereservation.manager.application;
 
-
 import com.tablereservation.manager.domain.ManagerSignInForm;
 import com.tablereservation.manager.domain.model.Manager;
 import com.tablereservation.manager.excepition.CustomException;

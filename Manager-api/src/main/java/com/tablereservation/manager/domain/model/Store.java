@@ -20,7 +20,7 @@ public class Store {
     @JoinColumn(name = "manager_id", referencedColumnName = "manager_id")
     private Manager manager;
 
-    private String store_name;
+    private String storeName;
     private String store_phone;
     private String address;
 }

@@ -6,8 +6,12 @@ import com.tablereservation.manager.domain.repository.ManagerRepository;
 import com.tablereservation.manager.domain.repository.StoreRepository;
 import com.tablereservation.manager.dto.StoreDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import org.springframework.data.domain.Pageable;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +25,7 @@ public class StoreService {
 
         Store store = Store.builder()
                 .manager(manager)
-                .store_name(storeDto.getStore_name())
+                .storeName(storeDto.getStore_name())
                 .store_phone(storeDto.getStore_phone())
                 .address(storeDto.getAddress())
                 .build();
@@ -34,7 +38,7 @@ public class StoreService {
         Store store = storeRepository.findById(storeId)
                 .orElseThrow(() -> new RuntimeException("가게가 존재하지 않습니다.")); // 커스텀 에러로 분리 필요
 
-        store.setStore_name(storeDto.getStore_name());
+        store.setStoreName(storeDto.getStore_name());
         store.setStore_phone(storeDto.getStore_phone());
         store.setAddress(storeDto.getAddress());
 
@@ -46,5 +50,13 @@ public class StoreService {
                 .orElseThrow(() -> new RuntimeException("가게가 존재하지 않습니다.")); // 커스텀 에러로 분리 필요
 
         storeRepository.delete(store);
+    }
+
+    public Page<Store> searchStores(String searchKeyword, Pageable pageable) {
+        return storeRepository.findByStoreNameContaining(searchKeyword, pageable);
+    }
+
+    public Optional<Store> getStore(Long storeId) {
+        return storeRepository.findById(storeId);
     }
 }
