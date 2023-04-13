@@ -1,15 +1,19 @@
 package com.tablereservation.manager.controller;
 
 import com.tablereservation.manager.application.StoreApplication;
+import com.tablereservation.manager.domain.model.Store;
 import com.tablereservation.manager.dto.StoreDto;
 import com.tablereservation.manager.service.StoreService;
 import com.tablereservation.secret.config.JwtAuthenticationProvider;
 import com.tablereservation.secret.common.UserVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import org.springframework.data.domain.Pageable;
 
 @RestController
 @RequestMapping("/store")
@@ -39,5 +43,17 @@ public class StoreController {
     @DeleteMapping("/{storeId}")
     public ResponseEntity<String> deleteStore(@PathVariable Long storeId) {
         return storeApplication.deleteStore(storeId);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<Page<Store>> searchStores(@RequestParam("searchKeyword") String searchKeyword, Pageable pageable) {
+        return ResponseEntity.ok(storeApplication.searchStores(searchKeyword, pageable));
+    }
+
+    @GetMapping("/{storeId}")
+    public ResponseEntity<Store> getStore(@PathVariable Long storeId) {
+        return storeApplication.getStore(storeId)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 }
