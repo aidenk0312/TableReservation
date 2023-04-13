@@ -8,6 +8,7 @@ import com.tablereservation.secret.common.UserVo;
 import com.tablereservation.manager.domain.repository.ManagerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,5 +30,11 @@ public class StoreController {
         Long managerId = userVo.getId();
 
         return storeService.createStore(storeDto, managerId);
+    }
+
+    @PutMapping("/{storeId}")
+    public ResponseEntity<String> updateStore(@PathVariable Long storeId, @RequestBody StoreDto storeDto) {
+        storeApplication.updateStore(storeId, storeDto);
+        return new ResponseEntity<>("Store 수정이 완료 되었습니다.", HttpStatus.OK);
     }
 }

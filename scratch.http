@@ -25,13 +25,24 @@ Content-Type: application/json
 ### 스토어 생성(manager)
 POST http://localhost:8080/store/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiTUFOQUdFUiIsImlhdCI6MTY4MTI4NDgyMSwiZXhwIjoxNjgxMzcxMjIxfQ.0tWIelOlVT0WkssW0H86T-Yy8D5vyN1iC_VJdD1qous
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiTUFOQUdFUiIsImlhdCI6MTY4MTM2MTMyNCwiZXhwIjoxNjgxNDQ3NzI0fQ.UTLgz0VZ8eRZLu4qUvzvoMLUbEHBLt_APLCj0G17MHw
 
 {
   "managerId": 1,
   "store_name": "test 가게",
   "store_phone": "02-1234-5678",
   "address": "Test 주소"
+}
+
+### 가게 정보 수정(manager)
+PUT http://localhost:8080/store/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6InFpalNBakR1VUZRVnlabDFkMStsZ1E9PSIsInJvbGVzIjoiTUFOQUdFUiIsImlhdCI6MTY4MTMwNjM3MywiZXhwIjoxNjgxMzkyNzczfQ.UPMx5LprRrB2pOLmumfwDF-bsUwHvqiv1nju-dH7dG4
+
+{
+  "store_name": "수정 가게",
+  "store_phone": "02-9876-5432",
+  "address": "수정 주소"
 }
 
 ### 회원가입(customer)
