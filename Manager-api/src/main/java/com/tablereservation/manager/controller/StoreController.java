@@ -5,7 +5,6 @@ import com.tablereservation.manager.dto.StoreDto;
 import com.tablereservation.manager.service.StoreService;
 import com.tablereservation.secret.config.JwtAuthenticationProvider;
 import com.tablereservation.secret.common.UserVo;
-import com.tablereservation.manager.domain.repository.ManagerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 public class StoreController {
 
     private final StoreApplication storeApplication;
-    private final ManagerRepository managerRepository;
     private final StoreService storeService;
 
     @Autowired
@@ -36,5 +34,10 @@ public class StoreController {
     public ResponseEntity<String> updateStore(@PathVariable Long storeId, @RequestBody StoreDto storeDto) {
         storeApplication.updateStore(storeId, storeDto);
         return new ResponseEntity<>("Store 수정이 완료 되었습니다.", HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{storeId}")
+    public ResponseEntity<String> deleteStore(@PathVariable Long storeId) {
+        return storeApplication.deleteStore(storeId);
     }
 }
