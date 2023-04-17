@@ -77,4 +77,47 @@ public class ReservationApplicationTest {
 
         verify(reservationService, times(1)).getReservationById(reservationId);
     }
+
+    @Test
+    @DisplayName("예약 수정 Test")
+    public void updateReservationTest() {
+        Long reservationId = 1L;
+        ReservationForm form = ReservationForm.builder()
+                .store_id(2L)
+                .customer_phone("010-4321-8765")
+                .reservation_time(LocalDateTime.now().plusDays(3))
+                .reservation_status("예약 변경됨")
+                .build();
+
+        Reservation existingReservation = Reservation.builder()
+                .reservation_id(reservationId)
+                .store_id(1L)
+                .customer_phone("010-1234-5678")
+                .reservation_time(LocalDateTime.now().plusDays(1))
+                .reservation_status("예약됨")
+                .build();
+
+        Reservation updatedReservation = Reservation.builder()
+                .reservation_id(reservationId)
+                .store_id(form.getStore_id())
+                .customer_phone(form.getCustomer_phone())
+                .reservation_time(form.getReservation_time())
+                .reservation_status(form.getReservation_status())
+                .build();
+
+        when(reservationService.getReservationById(reservationId)).thenReturn(existingReservation);
+        when(reservationService.updateReservation(reservationId, form)).thenReturn(updatedReservation);
+
+        Reservation result = reservationApplication.updateReservation(reservationId, form);
+
+        assertThat(result).isEqualTo(updatedReservation);
+        assertThat(result.getReservation_id()).isEqualTo(updatedReservation.getReservation_id());
+        assertThat(result.getStore_id()).isEqualTo(updatedReservation.getStore_id());
+        assertThat(result.getCustomer_phone()).isEqualTo(updatedReservation.getCustomer_phone());
+        assertThat(result.getReservation_time()).isEqualTo(updatedReservation.getReservation_time());
+        assertThat(result.getReservation_status()).isEqualTo(updatedReservation.getReservation_status());
+
+        verify(reservationService, times(1)).getReservationById(reservationId);
+        verify(reservationService, times(1)).updateReservation(reservationId, form);
+    }
 }

@@ -20,4 +20,10 @@ public class ReservationService {
         return reservationRepository.findById(reservationId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 예약이 존재하지 않습니다."));
     }
+
+    public Reservation updateReservation(Long reservationId, ReservationForm form) {
+        Reservation reservation = getReservationById(reservationId);
+        reservation.update(form);
+        return reservationRepository.save(reservation);
+    }
 }

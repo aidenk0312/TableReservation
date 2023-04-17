@@ -19,4 +19,10 @@ public class ReservationApplication {
     public Reservation getReservationById(Long reservationId) {
         return reservationService.getReservationById(reservationId);
     }
+
+    public Reservation updateReservation(Long reservationId, ReservationForm form) {
+        reservationService.getReservationById(reservationId);
+
+        return reservationService.updateReservation(reservationId, form);
+    }
 }

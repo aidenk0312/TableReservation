@@ -38,4 +38,11 @@ public class Reservation extends BaseEntity {
                 .reservation_status(form.getReservation_status())
                 .build();
     }
+
+    public void update(ReservationForm form) {
+        this.store_id = form.getStore_id();
+        this.customer_phone = form.getCustomer_phone();
+        this.reservation_time = form.getReservation_time();
+        this.reservation_status = form.getReservation_status();
+    }
 }

@@ -99,3 +99,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2Z
 GET http://localhost:8081/customer/reservations/2
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODE2OTk4MDUsImV4cCI6MTY4MTc4NjIwNX0.u0fpS_mOpd00I_nOeCaFa5QUv0-ThmUjRcghJGm8qIQ
+
+### 예약 수정(customer)
+PUT http://localhost:8081/customer/reservations/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODE2OTk4MDUsImV4cCI6MTY4MTc4NjIwNX0.u0fpS_mOpd00I_nOeCaFa5QUv0-ThmUjRcghJGm8qIQ
+
+{
+  "store_id": 1,
+  "customer_phone": "010-4321-8765",
+  "reservation_time": "2023-04-20T19:30:00",
+  "reservation_status": "예약 변경됨"
+}
