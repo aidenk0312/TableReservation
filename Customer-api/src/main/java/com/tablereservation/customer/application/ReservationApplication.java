@@ -25,4 +25,9 @@ public class ReservationApplication {
 
         return reservationService.updateReservation(reservationId, form);
     }
+
+    public void cancelReservation(Long reservationId) {
+        Reservation reservation = reservationService.getReservationById(reservationId);
+        reservationService.cancelReservation(reservationId);
+    }
 }

@@ -120,4 +120,38 @@ public class ReservationApplicationTest {
         verify(reservationService, times(1)).getReservationById(reservationId);
         verify(reservationService, times(1)).updateReservation(reservationId, form);
     }
+
+    @Test
+    @DisplayName("예약 취소 Test")
+    public void cancelReservationTest() {
+        Long reservationId = 1L;
+        Reservation reservation = Reservation.builder()
+                .reservation_id(reservationId)
+                .store_id(1L)
+                .customer_phone("010-1234-5678")
+                .reservation_time(LocalDateTime.now().plusDays(1))
+                .reservation_status("예약됨")
+                .build();
+
+        Reservation cancelledReservation = Reservation.builder()
+                .reservation_id(reservationId)
+                .store_id(1L)
+                .customer_phone("010-1234-5678")
+                .reservation_time(LocalDateTime.now().plusDays(1))
+                .reservation_status("CANCELLED")
+                .build();
+
+        when(reservationService.getReservationById(reservationId)).thenReturn(reservation);
+        doAnswer(invocation -> {
+            reservation.setReservation_status("CANCELLED");
+            return null;
+        }).when(reservationService).cancelReservation(reservationId);
+
+        reservationApplication.cancelReservation(reservationId);
+
+        assertThat(reservation.getReservation_status()).isEqualTo(cancelledReservation.getReservation_status());
+
+        verify(reservationService, times(1)).getReservationById(reservationId);
+        verify(reservationService, times(1)).cancelReservation(reservationId);
+    }
 }
