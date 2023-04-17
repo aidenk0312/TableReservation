@@ -24,4 +24,10 @@ public class ReservationController {
         Reservation reservation = reservationApplication.getReservationById(reservationId);
         return ResponseEntity.ok(reservation);
     }
+
+    @PutMapping("/{reservationId}")
+    public ResponseEntity<String> updateReservation(@PathVariable Long reservationId, @RequestBody ReservationForm form) {
+        Reservation updatedReservation = reservationApplication.updateReservation(reservationId, form);
+        return ResponseEntity.ok("예약이 성공적으로 수정되었습니다. 예약 ID: " + updatedReservation.getReservation_id());
+    }
 }
