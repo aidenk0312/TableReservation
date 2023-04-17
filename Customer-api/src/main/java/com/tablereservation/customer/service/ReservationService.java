@@ -15,4 +15,9 @@ public class ReservationService {
         Reservation reservation = Reservation.from(form);
         return reservationRepository.save(reservation);
     }
+
+    public Reservation getReservationById(Long reservationId) {
+        return reservationRepository.findById(reservationId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 예약이 존재하지 않습니다."));
+    }
 }

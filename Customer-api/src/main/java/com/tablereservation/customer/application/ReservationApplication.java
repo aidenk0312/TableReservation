@@ -15,4 +15,8 @@ public class ReservationApplication {
         Reservation reservation = reservationService.createReservation(form);
         return reservation.getReservation_id();
     }
+
+    public Reservation getReservationById(Long reservationId) {
+        return reservationService.getReservationById(reservationId);
+    }
 }
