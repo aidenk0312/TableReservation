@@ -111,3 +111,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2Z
   "reservation_time": "2023-04-20T19:30:00",
   "reservation_status": "예약 변경됨"
 }
+
+### 예약 취소(customer)
+DELETE http://localhost:8081/customer/reservations/1
+Content-Type: application/json
+Authorization: Bearer {access_token}

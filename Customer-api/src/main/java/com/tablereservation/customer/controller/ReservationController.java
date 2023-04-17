@@ -30,4 +30,10 @@ public class ReservationController {
         Reservation updatedReservation = reservationApplication.updateReservation(reservationId, form);
         return ResponseEntity.ok("예약이 성공적으로 수정되었습니다. 예약 ID: " + updatedReservation.getReservation_id());
     }
+
+    @DeleteMapping("/{reservationId}")
+    public ResponseEntity<String> cancelReservation(@PathVariable Long reservationId) {
+        reservationApplication.cancelReservation(reservationId);
+        return ResponseEntity.ok("예약이 성공적으로 취소되었습니다. 예약 ID: " + reservationId);
+    }
 }

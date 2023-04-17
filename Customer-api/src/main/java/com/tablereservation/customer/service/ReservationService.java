@@ -26,4 +26,10 @@ public class ReservationService {
         reservation.update(form);
         return reservationRepository.save(reservation);
     }
+
+    public void cancelReservation(Long reservationId) {
+        Reservation reservation = getReservationById(reservationId);
+        reservation.setReservation_status("CANCELLED");
+        reservationRepository.save(reservation);
+    }
 }
