@@ -74,11 +74,23 @@ Content-Type: application/json
 ### 이메일 인증(customer)
 GET http://localhost:8081/signup/customer/verify/?email=kys1064@naver.com&code=vXrKdcvtm2
 
-###로그인(customer)
+### 로그인(customer)
 POST http://localhost:8081/signIn/customer
 Content-Type: application/json
 
 {
   "email": "kys1064@naver.com",
   "password": "pw"
+}
+
+### 예약생성(customer)
+POST http://localhost:8081/customer/reservations
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODE2OTk4MDUsImV4cCI6MTY4MTc4NjIwNX0.u0fpS_mOpd00I_nOeCaFa5QUv0-ThmUjRcghJGm8qIQ
+
+{
+  "store_id": 2,
+  "customer_phone": "010-1234-5678",
+  "reservation_time": "2023-04-14T19:30:00",
+  "reservation_status": "예약됨"
 }
