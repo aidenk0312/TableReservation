@@ -2,7 +2,6 @@ package com.tablereservation.customer.controller;
 
 import com.tablereservation.customer.application.ReviewApplication;
 import com.tablereservation.customer.domain.ReviewDto;
-import com.tablereservation.customer.domain.model.Review;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,5 +37,11 @@ public class ReviewController {
 
         reviewApplication.updateReview(reviewId, comment, rating);
         return ResponseEntity.ok("리뷰가 성공적으로 수정되었습니다. 리뷰 ID: " + reviewId);
+    }
+
+    @DeleteMapping("/{reviewId}")
+    public ResponseEntity<String> deleteReview(@PathVariable Long reviewId) {
+        reviewApplication.deleteReview(reviewId);
+        return ResponseEntity.ok("리뷰가 성공적으로 삭제되었습니다. 리뷰 ID: " + reviewId);
     }
 }
