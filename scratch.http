@@ -25,7 +25,7 @@ Content-Type: application/json
 ### 스토어 생성(manager)
 POST http://localhost:8080/store/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiTUFOQUdFUiIsImlhdCI6MTY4MTM3Mjc4NSwiZXhwIjoxNjgxNDU5MTg1fQ.I2BX8Xupdw8vDc0Yt-BU13m7GbzAbY4rpbRbqEmLMt0
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiTUFOQUdFUiIsImlhdCI6MTY4MTc3NjE1NSwiZXhwIjoxNjgxODYyNTU1fQ.z6D2RbLn9EZ-eHun7aghUdUXqCBsOHFXUgCr2dKpElM
 
 {
   "managerId": 1,
@@ -37,7 +37,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2Z
 ### 가게 정보 수정(manager)
 PUT http://localhost:8080/store/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiTUFOQUdFUiIsImlhdCI6MTY4MTM3Mjc4NSwiZXhwIjoxNjgxNDU5MTg1fQ.I2BX8Xupdw8vDc0Yt-BU13m7GbzAbY4rpbRbqEmLMt0
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiTUFOQUdFUiIsImlhdCI6MTY4MTc3NjE1NSwiZXhwIjoxNjgxODYyNTU1fQ.z6D2RbLn9EZ-eHun7aghUdUXqCBsOHFXUgCr2dKpElM
 
 {
   "store_name": "수정 가게",
@@ -50,11 +50,11 @@ DELETE http://localhost:8080/store/3
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiTUFOQUdFUiIsImlhdCI6MTY4MTM3Mjc4NSwiZXhwIjoxNjgxNDU5MTg1fQ.I2BX8Xupdw8vDc0Yt-BU13m7GbzAbY4rpbRbqEmLMt0
 
-### 가게 검색
+### 가게 검색(manager)
 GET http://localhost:8080/store/search?searchKeyword=가게&page=0&size=10&sort=storeName,asc
 Content-Type: application/json
 
-### 가게 정보 조회
+### 가게 정보 조회(manager)
 GET http://localhost:8080/store/1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiTUFOQUdFUiIsImlhdCI6MTY4MTM3Mjc4NSwiZXhwIjoxNjgxNDU5MTg1fQ.I2BX8Xupdw8vDc0Yt-BU13m7GbzAbY4rpbRbqEmLMt0
@@ -86,10 +86,10 @@ Content-Type: application/json
 ### 예약생성(customer)
 POST http://localhost:8081/customer/reservations
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODE2OTk4MDUsImV4cCI6MTY4MTc4NjIwNX0.u0fpS_mOpd00I_nOeCaFa5QUv0-ThmUjRcghJGm8qIQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODE3NzYyMTIsImV4cCI6MTY4MTg2MjYxMn0.aanWhRebdWraz7yHFhYPQRTiNWGYMxfvvr6dgTEfLbo
 
 {
-  "store_id": 2,
+  "store_id": 1,
   "customer_phone": "010-1234-5678",
   "reservation_time": "2023-04-14T19:30:00",
   "reservation_status": "예약됨"
@@ -98,12 +98,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2Z
 ### 예약 상세 정보 조회(customer)
 GET http://localhost:8081/customer/reservations/2
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODE2OTk4MDUsImV4cCI6MTY4MTc4NjIwNX0.u0fpS_mOpd00I_nOeCaFa5QUv0-ThmUjRcghJGm8qIQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODE3NzYyMTIsImV4cCI6MTY4MTg2MjYxMn0.aanWhRebdWraz7yHFhYPQRTiNWGYMxfvvr6dgTEfLbo
 
 ### 예약 수정(customer)
 PUT http://localhost:8081/customer/reservations/2
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODE2OTk4MDUsImV4cCI6MTY4MTc4NjIwNX0.u0fpS_mOpd00I_nOeCaFa5QUv0-ThmUjRcghJGm8qIQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODE3NzYyMTIsImV4cCI6MTY4MTg2MjYxMn0.aanWhRebdWraz7yHFhYPQRTiNWGYMxfvvr6dgTEfLbo
 
 {
   "store_id": 1,
@@ -113,6 +113,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2Z
 }
 
 ### 예약 취소(customer)
-DELETE http://localhost:8081/customer/reservations/1
+DELETE http://localhost:8081/customer/reservations/3
 Content-Type: application/json
-Authorization: Bearer {access_token}
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODE3NzYyMTIsImV4cCI6MTY4MTg2MjYxMn0.aanWhRebdWraz7yHFhYPQRTiNWGYMxfvvr6dgTEfLbo
+
+### 예약 체크인(customer)
+POST http://localhost:8081/customer/reservations/1/check-in
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODE3NzYyMTIsImV4cCI6MTY4MTg2MjYxMn0.aanWhRebdWraz7yHFhYPQRTiNWGYMxfvvr6dgTEfLbo
+
+### 예약 취소 - 체크인 10분 안함(customer)
+DELETE http://localhost:8081/customer/reservations/2/cancel-no-check-in
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODE2OTk4MDUsImV4cCI6MTY4MTc4NjIwNX0.u0fpS_mOpd00I_nOeCaFa5QUv0-ThmUjRcghJGm8qIQ
