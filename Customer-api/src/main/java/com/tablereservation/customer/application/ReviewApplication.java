@@ -8,6 +8,9 @@ import com.tablereservation.customer.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class ReviewApplication {
@@ -51,5 +54,17 @@ public class ReviewApplication {
 
     public void deleteReview(Long reviewId) {
         reviewService.deleteReview(reviewId);
+    }
+
+    public List<ReviewDto> getReviewsByStoreId(Long storeId, int page, int size, String sort) {
+        List<Review> reviews = reviewService.getReviewsByStoreId(storeId, page, size, sort);
+        return reviews.stream()
+                .map(review -> ReviewDto.builder()
+                        .review_id(review.getReview_id())
+                        .reservation_id(review.getReservation().getReservation_id())
+                        .comment(review.getComment())
+                        .rating(review.getRating())
+                        .build())
+                .collect(Collectors.toList());
     }
 }

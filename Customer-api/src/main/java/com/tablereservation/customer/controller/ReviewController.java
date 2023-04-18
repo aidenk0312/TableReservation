@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -43,5 +44,14 @@ public class ReviewController {
     public ResponseEntity<String> deleteReview(@PathVariable Long reviewId) {
         reviewApplication.deleteReview(reviewId);
         return ResponseEntity.ok("리뷰가 성공적으로 삭제되었습니다. 리뷰 ID: " + reviewId);
+    }
+
+    @GetMapping("/store/{storeId}")
+    public ResponseEntity<List<ReviewDto>> getReviewsByStoreId(@PathVariable Long storeId,
+                                                               @RequestParam int page,
+                                                               @RequestParam int size,
+                                                               @RequestParam String sort) {
+        List<ReviewDto> reviewDtos = reviewApplication.getReviewsByStoreId(storeId, page, size, sort);
+        return ResponseEntity.ok(reviewDtos);
     }
 }

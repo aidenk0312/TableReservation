@@ -12,7 +12,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -99,5 +104,30 @@ class ReviewApplicationTest {
         reviewApplication.deleteReview(1L);
 
         verify(reviewService).deleteReview(1L);
+    }
+
+    @Test
+    @DisplayName("특정 매장의 리뷰 목록 조회 Test")
+    void getReviewsByStoreIdSuccess() {
+        Review review2 = new Review();
+        review2.setReview_id(2L);
+        review2.setReservation(reservation);
+        review2.setComment("아주 좋아요!");
+        review2.setRating(4);
+
+        List<Review> reviews = Arrays.asList(review, review2);
+        PageImpl<Review> reviewPage = new PageImpl<>(reviews, PageRequest.of(0, 10, Sort.unsorted()), reviews.size());
+
+        when(reviewService.getReviewsByStoreId(1L, 0, 10, "rating")).thenReturn(reviews);
+
+        List<ReviewDto> fetchedReviews = reviewApplication.getReviewsByStoreId(1L, 0, 10, "rating");
+
+        assertEquals(2, fetchedReviews.size());
+        assertEquals(1L, fetchedReviews.get(0).getReview_id());
+        assertEquals("맛집!", fetchedReviews.get(0).getComment());
+        assertEquals(5, fetchedReviews.get(0).getRating());
+        assertEquals(2L, fetchedReviews.get(1).getReview_id());
+        assertEquals("아주 좋아요!", fetchedReviews.get(1).getComment());
+        assertEquals(4, fetchedReviews.get(1).getRating());
     }
 }
