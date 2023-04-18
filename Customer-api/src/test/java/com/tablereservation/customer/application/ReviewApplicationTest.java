@@ -90,4 +90,14 @@ class ReviewApplicationTest {
 
         verify(reviewService).updateReview(review);
     }
+
+    @Test
+    @DisplayName("리뷰 삭제 Test")
+    void deleteReviewSuccess() {
+        doNothing().when(reviewService).deleteReview(1L);
+
+        reviewApplication.deleteReview(1L);
+
+        verify(reviewService).deleteReview(1L);
+    }
 }

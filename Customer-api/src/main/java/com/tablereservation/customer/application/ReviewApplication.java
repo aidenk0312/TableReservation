@@ -48,4 +48,8 @@ public class ReviewApplication {
 
         reviewService.updateReview(review);
     }
+
+    public void deleteReview(Long reviewId) {
+        reviewService.deleteReview(reviewId);
+    }
 }
