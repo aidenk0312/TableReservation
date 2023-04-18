@@ -5,6 +5,7 @@ import com.tablereservation.manager.domain.model.Store;
 import com.tablereservation.manager.domain.repository.ManagerRepository;
 import com.tablereservation.manager.domain.repository.StoreRepository;
 import com.tablereservation.manager.dto.StoreDto;
+import com.tablereservation.manager.excepition.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,9 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.data.domain.Pageable;
 import java.util.Optional;
+
+import static com.tablereservation.manager.excepition.ErrorCode.NOT_FOUND_MANAGER;
+import static com.tablereservation.manager.excepition.ErrorCode.NOT_FOUND_STORE;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +25,7 @@ public class StoreService {
 
     public ResponseEntity<?> createStore(StoreDto storeDto, Long managerId) {
         Manager manager = managerRepository.findById(managerId)
-                .orElseThrow(() -> new RuntimeException("매니저가 존재하지 않습니다.")); // 커스텀 에러로 분리 필요
+                .orElseThrow(() -> new CustomException(NOT_FOUND_MANAGER));
 
         Store store = Store.builder()
                 .manager(manager)
@@ -36,7 +40,7 @@ public class StoreService {
 
     public void updateStore(Long storeId, StoreDto storeDto) {
         Store store = storeRepository.findById(storeId)
-                .orElseThrow(() -> new RuntimeException("가게가 존재하지 않습니다.")); // 커스텀 에러로 분리 필요
+                .orElseThrow(() -> new CustomException(NOT_FOUND_STORE));
 
         store.setStoreName(storeDto.getStore_name());
         store.setStore_phone(storeDto.getStore_phone());
@@ -47,7 +51,7 @@ public class StoreService {
 
     public void deleteStore(Long storeId) {
         Store store = storeRepository.findById(storeId)
-                .orElseThrow(() -> new RuntimeException("가게가 존재하지 않습니다.")); // 커스텀 에러로 분리 필요
+                .orElseThrow(() -> new CustomException(NOT_FOUND_STORE));
 
         storeRepository.delete(store);
     }

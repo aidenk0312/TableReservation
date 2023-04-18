@@ -3,6 +3,7 @@ package com.tablereservation.customer.application;
 import com.tablereservation.customer.domain.ReviewDto;
 import com.tablereservation.customer.domain.model.Reservation;
 import com.tablereservation.customer.domain.model.Review;
+import com.tablereservation.customer.excepition.CustomException;
 import com.tablereservation.customer.service.ReservationService;
 import com.tablereservation.customer.service.ReviewService;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.tablereservation.customer.excepition.ErrorCode.NOT_FOUND_CHECKIN;
 
 @Service
 @RequiredArgsConstructor
@@ -20,7 +23,7 @@ public class ReviewApplication {
     public Long createReview(Long reservationId, String comment, Integer rating) {
         Reservation reservation = reservationService.getReservationById(reservationId);
         if (!"체크인 완료".equals(reservation.getReservation_status())) {
-            throw new IllegalStateException("체크인 완료된 예약에 대해서만 리뷰를 작성할 수 있습니다.");
+            throw new CustomException(NOT_FOUND_CHECKIN);
         }
 
         Review review = Review.builder()

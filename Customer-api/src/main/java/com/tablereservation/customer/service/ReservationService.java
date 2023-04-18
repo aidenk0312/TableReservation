@@ -3,8 +3,11 @@ package com.tablereservation.customer.service;
 import com.tablereservation.customer.domain.ReservationForm;
 import com.tablereservation.customer.domain.model.Reservation;
 import com.tablereservation.customer.domain.repository.ReservationRepository;
+import com.tablereservation.customer.excepition.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import static com.tablereservation.customer.excepition.ErrorCode.NOT_FOUND_RESERVATION;
 
 @Service
 @RequiredArgsConstructor
@@ -18,7 +21,7 @@ public class ReservationService {
 
     public Reservation getReservationById(Long reservationId) {
         return reservationRepository.findById(reservationId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 예약이 존재하지 않습니다."));
+                .orElseThrow(() -> new CustomException(NOT_FOUND_RESERVATION));
     }
 
     public Reservation updateReservation(Long reservationId, ReservationForm form) {
