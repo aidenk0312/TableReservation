@@ -39,4 +39,13 @@ public class ReviewApplication {
                 .rating(review.getRating())
                 .build();
     }
+
+    public void updateReview(Long reviewId, String comment, Integer rating) {
+        Review review = reviewService.getReviewById(reviewId);
+
+        review.setComment(comment);
+        review.setRating(rating);
+
+        reviewService.updateReview(review);
+    }
 }

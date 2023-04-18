@@ -139,6 +139,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2Z
 }
 
 ### 리뷰 상세 조회(customer)
-GET http://localhost:8081/customer/reviews/2
+GET http://localhost:8081/customer/reviews/1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODE2OTk4MDUsImV4cCI6MTY4MTc4NjIwNX0.u0fpS_mOpd00I_nOeCaFa5QUv0-ThmUjRcghJGm8qIQ
+
+### 리뷰 수정(customer)
+PUT http://localhost:8081/customer/reviews/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODE2OTk4MDUsImV4cCI6MTY4MTc4NjIwNX0.u0fpS_mOpd00I_nOeCaFa5QUv0-ThmUjRcghJGm8qIQ
+
+{
+  "comment": "좋아요!",
+  "rating": 4
+}
