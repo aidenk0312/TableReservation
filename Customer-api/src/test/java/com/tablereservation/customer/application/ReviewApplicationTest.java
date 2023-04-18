@@ -76,4 +76,18 @@ class ReviewApplicationTest {
 
         assertThrows(NoSuchElementException.class, () -> reviewApplication.getReviewDto(2L));
     }
+
+    @Test
+    @DisplayName("리뷰 수정 Test")
+    void updateReviewSuccess() {
+        when(reviewService.getReviewById(1L)).thenReturn(review);
+        when(reviewService.updateReview(review)).thenReturn(review);
+
+        reviewApplication.updateReview(1L, "좋아요!", 4);
+
+        assertEquals("좋아요!", review.getComment());
+        assertEquals(4, review.getRating());
+
+        verify(reviewService).updateReview(review);
+    }
 }
