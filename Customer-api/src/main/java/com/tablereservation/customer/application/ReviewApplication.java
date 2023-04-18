@@ -1,5 +1,6 @@
 package com.tablereservation.customer.application;
 
+import com.tablereservation.customer.domain.ReviewDto;
 import com.tablereservation.customer.domain.model.Reservation;
 import com.tablereservation.customer.domain.model.Review;
 import com.tablereservation.customer.service.ReservationService;
@@ -27,5 +28,15 @@ public class ReviewApplication {
 
         Review savedReview = reviewService.createReview(review);
         return savedReview.getReview_id();
+    }
+
+    public ReviewDto getReviewDto(Long reviewId) {
+        Review review = reviewService.getReviewById(reviewId);
+        return ReviewDto.builder()
+                .review_id(review.getReview_id())
+                .reservation_id(review.getReservation().getReservation_id())
+                .comment(review.getComment())
+                .rating(review.getRating())
+                .build();
     }
 }

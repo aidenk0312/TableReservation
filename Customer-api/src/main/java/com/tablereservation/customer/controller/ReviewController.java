@@ -1,12 +1,11 @@
 package com.tablereservation.customer.controller;
 
 import com.tablereservation.customer.application.ReviewApplication;
+import com.tablereservation.customer.domain.ReviewDto;
+import com.tablereservation.customer.domain.model.Review;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -24,5 +23,11 @@ public class ReviewController {
 
         Long reviewId = reviewApplication.createReview(reservationId, comment, rating);
         return ResponseEntity.ok("리뷰가 성공적으로 생성되었습니다. 리뷰 ID: " + reviewId);
+    }
+
+    @GetMapping("/{reviewId}")
+    public ResponseEntity<ReviewDto> getReview(@PathVariable Long reviewId) {
+        ReviewDto reviewDto = reviewApplication.getReviewDto(reviewId);
+        return ResponseEntity.ok(reviewDto);
     }
 }
