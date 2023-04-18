@@ -32,4 +32,10 @@ public class ReservationService {
         reservation.setReservation_status("CANCELLED");
         reservationRepository.save(reservation);
     }
+
+    public void checkInReservation(Long reservationId) {
+        Reservation reservation = getReservationById(reservationId);
+        reservation.setReservation_status("체크인 완료");
+        reservationRepository.save(reservation);
+    }
 }

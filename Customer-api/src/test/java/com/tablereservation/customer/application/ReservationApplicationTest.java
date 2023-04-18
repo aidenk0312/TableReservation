@@ -1,7 +1,10 @@
 package com.tablereservation.customer.application;
 
 import com.tablereservation.customer.domain.ReservationForm;
+import com.tablereservation.customer.domain.model.Kiosk;
 import com.tablereservation.customer.domain.model.Reservation;
+import com.tablereservation.customer.domain.repository.KioskRepository;
+import com.tablereservation.customer.domain.repository.ReservationRepository;
 import com.tablereservation.customer.service.ReservationService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -23,11 +26,17 @@ public class ReservationApplicationTest {
     @MockBean
     private ReservationService reservationService;
 
+    @MockBean
+    private KioskRepository kioskRepository;
+
+    @MockBean
+    private ReservationRepository reservationRepository;
+
     private ReservationApplication reservationApplication;
 
     @BeforeEach
     public void setUp() {
-        reservationApplication = new ReservationApplication(reservationService);
+        reservationApplication = new ReservationApplication(reservationService, kioskRepository, reservationRepository);
     }
 
     @Test
@@ -152,6 +161,58 @@ public class ReservationApplicationTest {
         assertThat(reservation.getReservation_status()).isEqualTo(cancelledReservation.getReservation_status());
 
         verify(reservationService, times(1)).getReservationById(reservationId);
+        verify(reservationService, times(1)).cancelReservation(reservationId);
+    }
+
+    @Test
+    @DisplayName("체크인 테스트")
+    public void checkInTest() {
+        Long reservationId = 1L;
+        Reservation reservation = Reservation.builder()
+                .reservation_id(reservationId)
+                .store_id(1L)
+                .customer_phone("010-1234-5678")
+                .reservation_time(LocalDateTime.now().plusDays(1))
+                .reservation_status("예약됨")
+                .build();
+
+        Kiosk kiosk = Kiosk.builder().kiosk_id(1L).reservation(reservation).build();
+
+        when(reservationService.getReservationById(reservationId)).thenReturn(reservation);
+        when(kioskRepository.save(any(Kiosk.class))).thenReturn(kiosk);
+
+        reservationApplication.checkIn(reservationId);
+
+        verify(reservationService, times(1)).getReservationById(reservationId);
+        verify(kioskRepository, times(1)).save(any(Kiosk.class));
+    }
+
+    @Test
+    @DisplayName("10분간 체크인이 없을 시 예약 취소 Test")
+    public void cancelReservationWhenNoCheckInFor10MinutesTest() {
+        Long reservationId = 1L;
+        Reservation reservation = Reservation.builder()
+                .reservation_id(reservationId)
+                .store_id(1L)
+                .customer_phone("010-1234-5678")
+                .reservation_time(LocalDateTime.now().minusMinutes(11))
+                .reservation_status("예약됨")
+                .build();
+
+        when(reservationService.getReservationById(reservationId)).thenReturn(reservation);
+        when(kioskRepository.findByReservationId(reservationId)).thenReturn(null);
+        doAnswer(invocation -> {
+            reservation.setReservation_status("CANCELLED");
+            reservation.setReservation_time(LocalDateTime.now().plusDays(1));
+            return null;
+        }).when(reservationService).cancelReservation(reservationId);
+
+        reservationApplication.cancelReservationWhenNoCheckInFor10Minutes(reservationId);
+
+        assertThat(reservation.getReservation_status()).isEqualTo("CANCELLED");
+
+        verify(reservationService, times(1)).getReservationById(reservationId);
+        verify(kioskRepository, times(1)).findByReservationId(reservationId);
         verify(reservationService, times(1)).cancelReservation(reservationId);
     }
 }

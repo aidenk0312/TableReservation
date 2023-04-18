@@ -36,4 +36,16 @@ public class ReservationController {
         reservationApplication.cancelReservation(reservationId);
         return ResponseEntity.ok("예약이 성공적으로 취소되었습니다. 예약 ID: " + reservationId);
     }
+
+    @PostMapping("/{reservationId}/check-in")
+    public ResponseEntity<String> checkIn(@PathVariable Long reservationId) {
+        reservationApplication.checkIn(reservationId);
+        return ResponseEntity.ok("체크인이 완료되었습니다. 예약 ID: " + reservationId);
+    }
+
+    @DeleteMapping("/{reservationId}/cancel-no-check-in")
+    public ResponseEntity<String> cancelReservationWhenNoCheckInFor10Minutes(@PathVariable Long reservationId) {
+        reservationApplication.cancelReservationWhenNoCheckInFor10Minutes(reservationId);
+        return ResponseEntity.ok("10분간 체크인을 하지 않아 예약이 취소 됐습니다. 24시간 동안 예약이 불가능 합니다. 예약 ID: " + reservationId);
+    }
 }
