@@ -14,8 +14,11 @@ public enum ErrorCode {
 
     // Login
     LOGIN_CHECK_FAIL(HttpStatus.BAD_REQUEST, "아이디나 패스워드를 확인해주세요."),
+    ALREADY_VERIFY(HttpStatus.BAD_REQUEST, "이미 인증이 완료 되었습니다."),
 
-    ALREADY_VERIFY(HttpStatus.BAD_REQUEST, "이미 인증이 완료 되었습니다.");
+    // Store
+    NOT_FOUND_MANAGER(HttpStatus.BAD_REQUEST, "매니저가 존재하지 않습니다."),
+    NOT_FOUND_STORE(HttpStatus.BAD_REQUEST, "가게가 존재하지 않습니다.");
 
     private final HttpStatus httpStatus;
     private final String detail;
