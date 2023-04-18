@@ -139,7 +139,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2Z
 }
 
 ### 리뷰 상세 조회(customer)
-GET http://localhost:8081/customer/reviews/6
+GET http://localhost:8081/customer/reviews/1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODE2OTk4MDUsImV4cCI6MTY4MTc4NjIwNX0.u0fpS_mOpd00I_nOeCaFa5QUv0-ThmUjRcghJGm8qIQ
 
@@ -150,10 +150,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2Z
 
 {
   "comment": "좋아요!",
-  "rating": 4
+  "rating": 3
 }
 
 ### 리뷰 삭제(customer)
 DELETE http://localhost:8081/customer/reviews/6
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODE2OTk4MDUsImV4cCI6MTY4MTc4NjIwNX0.u0fpS_mOpd00I_nOeCaFa5QUv0-ThmUjRcghJGm8qIQ
+
+### 특정 매장 리뷰 목록 조회(customer)
+GET http://localhost:8081/customer/reviews/store/2?page=0&size=10&sort=rating,desc
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyTTNMWDM3TTB2Uy82VXRTYlY2ZzZCWHM5czVwdFM2aGRWYm1nVjlLbStjPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODE2OTk4MDUsImV4cCI6MTY4MTc4NjIwNX0.u0fpS_mOpd00I_nOeCaFa5QUv0-ThmUjRcghJGm8qIQ
