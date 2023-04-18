@@ -23,9 +23,9 @@ class SignUpTest {
         CustomerSignUpForm form = CustomerSignUpForm.builder()
                 .name("kim")
                 .birth(LocalDate.now())
-                .email("abc111@test.com")
+                .email("abc1222@test.com")
                 .password("1")
-                .phone("01011111111")
+                .phone("01011111112")
                 .build();
         Customer c = service.signUp(form);
 

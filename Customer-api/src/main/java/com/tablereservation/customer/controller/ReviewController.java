@@ -2,6 +2,7 @@ package com.tablereservation.customer.controller;
 
 import com.tablereservation.customer.application.ReviewApplication;
 import com.tablereservation.customer.domain.ReviewDto;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ public class ReviewController {
     private final ReviewApplication reviewApplication;
 
     @PostMapping
+    @ApiOperation("리뷰 생성 API")
     public ResponseEntity<String> createReview(@RequestBody Map<String, Object> payload) {
         Long reservationId = Long.parseLong(payload.get("reservation_id").toString());
         String comment = payload.get("comment").toString();
@@ -26,12 +28,14 @@ public class ReviewController {
     }
 
     @GetMapping("/{reviewId}")
+    @ApiOperation("리뷰 조회 API")
     public ResponseEntity<ReviewDto> getReview(@PathVariable Long reviewId) {
         ReviewDto reviewDto = reviewApplication.getReviewDto(reviewId);
         return ResponseEntity.ok(reviewDto);
     }
 
     @PutMapping("/{reviewId}")
+    @ApiOperation("리뷰 수정 API")
     public ResponseEntity<String> updateReview(@PathVariable Long reviewId, @RequestBody Map<String, Object> payload) {
         String comment = payload.get("comment").toString();
         Integer rating = Integer.parseInt(payload.get("rating").toString());
@@ -41,12 +45,14 @@ public class ReviewController {
     }
 
     @DeleteMapping("/{reviewId}")
+    @ApiOperation("리뷰 삭제 API")
     public ResponseEntity<String> deleteReview(@PathVariable Long reviewId) {
         reviewApplication.deleteReview(reviewId);
         return ResponseEntity.ok("리뷰가 성공적으로 삭제되었습니다. 리뷰 ID: " + reviewId);
     }
 
     @GetMapping("/store/{storeId}")
+    @ApiOperation("매장 별 리뷰 조회 API")
     public ResponseEntity<List<ReviewDto>> getReviewsByStoreId(@PathVariable Long storeId,
                                                                @RequestParam int page,
                                                                @RequestParam int size,
